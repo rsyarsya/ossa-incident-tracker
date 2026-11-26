@@ -4,7 +4,7 @@ OSSA membantu tim keamanan mencatat dan menindaklanjuti insiden lintas departeme
 
 ## Arsitektur Track C
 
-Operator memakai CloudShell untuk memanggil Lambda Function URL melalui HTTPS dengan SigV4. Identitas sesi memerlukan izin invoke. Lambda menggunakan execution role lab untuk membaca objek JSON dari prefix private S3 `incidents/`. Region rancangan adalah `us-east-1`.
+Operator memakai CloudShell untuk memanggil Lambda Function URL melalui HTTPS dengan SigV4. Identitas sesi memerlukan izin invoke. Lambda menggunakan `LabRole` untuk membaca objek JSON di prefix `incidents/` pada bucket S3 privat. Demo dijalankan di `us-east-1`.
 
 ![Arsitektur Track C dan izin IAM](docs/diagrams/track-c.png)
 
@@ -12,7 +12,7 @@ Operator memakai CloudShell untuk memanggil Lambda Function URL melalui HTTPS de
 
 | Endpoint | Fungsi | HTTP sukses | Tahap |
 | --- | --- | --- | --- |
-| GET /incidents | Daftar insiden dalam array items | 200 | Starter, diuji lokal |
+| GET /incidents | Daftar insiden dalam array items | 200 | Teruji di AWS Academy |
 | POST /incidents | Buat laporan | 201 | Rancangan |
 | PATCH /incidents/{id} | Perbarui triase | 200 | Rancangan |
 | DELETE /incidents/{id} | Hapus record uji | 204 | Rancangan |
@@ -23,4 +23,6 @@ Dari root repo, jalankan `python -m unittest discover -s tests -v` dengan Python
 
 ## Demo lab
 
-Target demo adalah HTTP 200 dengan dua ID yang sama seperti objek contoh di S3. Ikuti [panduan deployment](docs/deployment.md) saat sesi lab tersedia. Pengujian AWS masih tertunda. Perluasan EC2, ECR dan RDS MySQL direncanakan setelah demo Track C dan konfirmasi akses sandbox.
+Demo `GET /incidents` berhasil di sandbox AWS Academy. Tes Lambda mengembalikan status 200 dan kedua insiden contoh. Function URL dengan `AWS_IAM` mengembalikan HTTP 200 untuk permintaan bertanda tangan SigV4 dan HTTP 403 untuk permintaan tanpa tanda tangan. [Bukti pengujian](docs/evidence/README.md)
+
+Konfigurasi lab dan langkah untuk mengulang demo tersedia di [panduan deployment](docs/deployment.md). Perluasan dengan EC2, ECR, dan RDS MySQL masih bergantung pada akses sandbox.
