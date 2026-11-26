@@ -1,0 +1,12 @@
+{
+  "id": "00000000-0000-4000-8000-000000000002",
+  "title": "Login tidak dikenal",
+  "description": "Perangkat baru mengakses akun uji.",
+  "department": "it",
+  "category": "suspicious_login",
+  "severity": "unassessed",
+  "status": "new",
+  "assignee": null,
+  "createdAt": "2026-11-26T01:00:00Z",
+  "updatedAt": "2026-11-26T01:00:00Z"
+}

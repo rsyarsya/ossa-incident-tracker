@@ -1,0 +1,12 @@
+{
+  "id": "00000000-0000-4000-8000-000000000001",
+  "title": "Permintaan perubahan rekening",
+  "description": "Email fiktif mengatasnamakan vendor.",
+  "department": "finance",
+  "category": "phishing",
+  "severity": "unassessed",
+  "status": "new",
+  "assignee": null,
+  "createdAt": "2026-11-26T01:00:00Z",
+  "updatedAt": "2026-11-26T01:00:00Z"
+}
